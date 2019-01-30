@@ -3,6 +3,6 @@
 //   This will create test1.s
 
 long long int func(long long int a, long long int b, long long int c) {
-  int f = (a + b) - c;
+  long long int f = (a + b) - c;
   return f;
 }
