@@ -1,6 +1,10 @@
 # comp3971
 
-Simple C examples
+##Simple C examples
+* test1.c
+* test2.c
+* bad.c
+
 
 ## Generating assembly code output from a C program
 
