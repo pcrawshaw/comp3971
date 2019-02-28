@@ -2,7 +2,7 @@
 // Generate ASM code only gcc -S test1.c
 //   This will create test1.s
 
-int func(int a, int b, int c) {
-  int f = (a + b) - c;
+long long int func(long long int a, long long int b, long long int c) {
+  long long int f = (a + b) - c;
   return f;
 }
