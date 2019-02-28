@@ -30,9 +30,9 @@ L2:	mov x21, #0  // k = 0
 	lsl x11, x11, #2
 
 	// Now we have the offset of c[i][j],
-	// Add this to the base address of c, which is x0 (1st arg)
+	// Add this to the base address of c, which is x2 (3rd arg)
 	// And load into 32-bit FP register s4
-	add x11, x0, x11
+	add x11, x2, x11
 	ldur s4, [x11, #0]
 
 	// Use a similar sequence of instructions to get b[k][j]
@@ -40,7 +40,7 @@ L2:	mov x21, #0  // k = 0
 L3:	lsl x9, x21, #2
 	add x9, x9, x20
 	lsl x9, x9, #2
-	add x9, x2, x9
+	add x9, x1, x9
 	ldur s5, [x9, #0]
 
 	// Use a similar sequence of instructions to get a[i][k]
@@ -48,7 +48,7 @@ L3:	lsl x9, x21, #2
 	lsl x9, x19, #2
 	add x9, x9, x21
 	lsl x9, x9, #2
-	add x9, x1, x9
+	add x9, x0, x9
 	ldur s6, [x9, #0]
 
 	// Now we have our values loaded in FP registers,

@@ -17,15 +17,15 @@
 float *A, *B, *C;
 
 // Prototype for assembly version of matrix multiply in file mm_armv8.s
-void mm_armv8(float *c, float *a, float *b, size_t n);
+void mm_armv8(float *a, float *b, float *c, size_t n);
 
 // Prototype for NEON SIMD assembly version of matrix multiply which
 // will be in the file mm_neon.s
-void mm_neon(float *c, float *a, float *b, size_t n);
+void mm_neon(float *a, float *b, float *c, size_t n);
 
 // Unoptimized matrix multiply using single-dimenional arrays to
 // represent matrices. n is matrix dimension
-void mm(float* C, float* A, float* B, size_t n)
+void mm(float* A, float* B, float* C, size_t n)
 {
   for (size_t i=0; i < n; i++)           // rows
     for (size_t j=0; j < n; j++)         // columns
@@ -89,19 +89,19 @@ int main() {
 
   // Test C version of matrix multiply
   zero_matrix(C, SIZE);
-  mm(C, A, B, SIZE);
+  mm(A, B, C, SIZE);
   puts("Using C code, C = ");
   print_matrix(C, SIZE);
 
   // Test the ARMv8 assembly version of matrix multiply
   zero_matrix(C, SIZE);
-  mm_armv8(C, A, B, SIZE);
-  puts("Using ARMv8 ASM, C =");
+  mm_armv8(A, B, C, SIZE);
+  puts("Using ARMv8 ASM code, C = ");
   print_matrix(C, SIZE);
 
   // Test the Neon version of matrix multiply
   zero_matrix(C, SIZE);
-  mm_neon(C, B, A, SIZE);
-  puts("Using ARMv8 NEON ASM, C = ");
+  mm_neon(A, B, C, SIZE);
+  puts("Using ARMv8 NEON ASM code, C = ");
   print_matrix(C, SIZE);
 }
