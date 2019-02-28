@@ -1,10 +1,12 @@
 # comp3971
 
-##Simple C examples
-* test1.c
-* test2.c
-* bad.c
-
+## Simple C examples
+* test1.c: Simple example function
+* test2.c: Calling a function
+* bad.c: This program will crash!
+* simd.c: ARMv8 NEON SIMD examples
+* vs/: Vector sum example
+* mm/: Matrix multiply skelton code
 
 ## Generating assembly code output from a C program
 
