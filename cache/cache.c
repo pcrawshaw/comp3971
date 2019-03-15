@@ -8,7 +8,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define DATA_SIZE 512
+#define DATA_SIZE 32
 
 // Gets the number of clock ticks
 static __inline__ unsigned long long rdtsc(void);
