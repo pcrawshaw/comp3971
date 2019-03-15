@@ -2,6 +2,8 @@
 // Copy memory blocks and display information about clock cycles used
 //
 
+// Compile with: gcc -o cache cache.c
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
