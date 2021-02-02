@@ -24,11 +24,11 @@ In binary and hexadecimal:
 
 A very small ARMv8 assembly language program:
 
-```
-        .arch armv8-a
-        .text
+```asm
+.arch armv8-a
+.text
 
-        add x9, x20, x21
+add x9, x20, x21
 ```
 
 ### Assemble a program
@@ -52,20 +52,10 @@ First, use `objdump -d` to disassemble the binary object file. As we might guess
 this reverses the assembly process and gives us a textual assembly
 language version of the program.
 
-*Aside: Can we have a "decompiler" ("discompiler"?) for a high-level language
+*Aside: Can we have a "decompiler" (or should it be "discomplier"?) for a high-level language
 like C or Java? Could such a program do the same "reversing" operation 
 and give us our source code back if we start with a binary object file?*
 
-
-
-=======
-source code file - only a single ADD instruction in this example.
-
-We can examine this file with some standard Linux tools.
-
-First, use `objdump -d` to disassemble the binary object file. As the word
-suggests, this reverses the assenbly process and gives us a textual assembly
-language version of the program.
 
 ```
 r_format_example.o:     file format elf64-littleaarch64
@@ -80,7 +70,7 @@ Disassembly of section .text:
 The `objdump` utility understands and can display 
 information about object files.
 
-The '.text' section means **executable code** (Why? Google it and find out if
+Note that the '.text' section means **executable code** (Why? Google it and find out if
 you are interested). 
 
 We see the hexadecimal version of the instruction, which is as we expect,
@@ -92,15 +82,17 @@ We see the hexadecimal version of the instruction, which is as we expect,
 We can also do a more direct analysis of the object file using the `hexdump`
 utility to dump the "raw" bytes of the object file:
 
-The '.text' section means *executable code* (Why? Google it and find out if
-you are interested). The `objdump` utility understands and can display 
- information about object files.
+First let's note that the file is 688 bytes in length:
 
-We see the hexadecimal version of the instruction, which is (as it should be)
-0x8b150289.
+```bash
+peterc@ubuntu:~/comp3971$ ls -l r_format_example.o
+-rw-rw---- 1 peterc peterc 688 Feb  2 19:19 r_format_example.o
+```
+
+We'll look at the first 256 bytes of the file:
 
 <pre>
-$ hexdump -C r_format_example.o
+$ hexdump -n 256 -C r_format_example.o
 
 00000000  7f 45 4c 46 02 01 01 00  00 00 00 00 00 00 00 00  |.ELF............|
 00000010  01 00 b7 00 01 00 00 00  00 00 00 00 00 00 00 00  |................|
@@ -118,7 +110,8 @@ $ hexdump -C r_format_example.o
 000000d0  72 74 61 62 00 2e 73 68  73 74 72 74 61 62 00 2e  |rtab..shstrtab..|
 000000e0  74 65 78 74 00 2e 64 61  74 61 00 2e 62 73 73 00  |text..data..bss.|
 000000f0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
-.
-.
-.
+00000100
 </pre>
+
+We can see (on the fifth line of the output) the `ADD` instruction encoded 
+as `89 02 15 8b`. Why is it "backwards"?
