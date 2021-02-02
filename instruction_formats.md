@@ -15,24 +15,14 @@ Rn = 20
 Rd = 9
 ```
 
-<<<<<<< HEAD
 In binary and hexadecimal: 
-=======
-In binary: 
->>>>>>> 094076b8faffa172c1fc372785f6863b1d6f0cf4
 ```
 1000 1011 0001 0101 0000 0010 1000 1001 = 8B150289
 ```
 
-<<<<<<< HEAD
 ## On an ARMv8 system:
 
 A very small ARMv8 assembly language program:
-=======
-## On an ARM system:
-
-a very small ARMv8 assembly language program:
->>>>>>> 094076b8faffa172c1fc372785f6863b1d6f0cf4
 
 ```
         .arch armv8-a
@@ -41,14 +31,10 @@ a very small ARMv8 assembly language program:
         add x9, x20, x21
 ```
 
-<<<<<<< HEAD
 ### Assemble a program
 
 The GCC compiler will "assemble" a program for us (it recognizes the .s file 
 name suffix):
-=======
-The GCC compiler will "assemble" a program for us (it recognizes the .s file anme suffix)
->>>>>>> 094076b8faffa172c1fc372785f6863b1d6f0cf4
 
 ```
  $ gcc -c r_format_example.s
@@ -56,7 +42,6 @@ The GCC compiler will "assemble" a program for us (it recognizes the .s file anm
 
 We should now have a file called `r_format_example.o`. This is an *object* file. 
 It contains the binary machine language version of the instructions in the
-<<<<<<< HEAD
 source code file - only a single `ADD` instruction in this example.
 
 We can examine this file with some standard Linux tools.
@@ -82,7 +67,6 @@ First, use `objdump -d` to disassemble the binary object file. As the word
 suggests, this reverses the assenbly process and gives us a textual assembly
 language version of the program.
 
->>>>>>> 094076b8faffa172c1fc372785f6863b1d6f0cf4
 ```
 r_format_example.o:     file format elf64-littleaarch64
 
@@ -93,7 +77,6 @@ Disassembly of section .text:
    0:   8b150289        add     x9, x20, x21
 ```
 
-<<<<<<< HEAD
 The `objdump` utility understands and can display 
 information about object files.
 
@@ -109,8 +92,6 @@ We see the hexadecimal version of the instruction, which is as we expect,
 We can also do a more direct analysis of the object file using the `hexdump`
 utility to dump the "raw" bytes of the object file:
 
-<pre>
-=======
 The '.text' section means *executable code* (Why? Google it and find out if
 you are interested). The `objdump` utility understands and can display 
  information about object files.
@@ -118,22 +99,14 @@ you are interested). The `objdump` utility understands and can display
 We see the hexadecimal version of the instruction, which is (as it should be)
 0x8b150289.
 
-We can also do a more direct analysis of the object file using the `hexdump`
-utility:
-
-```
->>>>>>> 094076b8faffa172c1fc372785f6863b1d6f0cf4
+<pre>
 $ hexdump -C r_format_example.o
 
 00000000  7f 45 4c 46 02 01 01 00  00 00 00 00 00 00 00 00  |.ELF............|
 00000010  01 00 b7 00 01 00 00 00  00 00 00 00 00 00 00 00  |................|
 00000020  00 00 00 00 00 00 00 00  f0 00 00 00 00 00 00 00  |................|
 00000030  00 00 00 00 40 00 00 00  00 00 40 00 07 00 06 00  |....@.....@.....|
-<<<<<<< HEAD
 00000040  <b>89 02 15 8b</b> 00 00 00 00  00 00 00 00 00 00 00 00  |................|
-=======
-00000040  *89 02 15 8b* 00 00 00 00  00 00 00 00 00 00 00 00  |................|
->>>>>>> 094076b8faffa172c1fc372785f6863b1d6f0cf4
 00000050  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 00000060  00 00 00 00 03 00 01 00  00 00 00 00 00 00 00 00  |................|
 00000070  00 00 00 00 00 00 00 00  00 00 00 00 03 00 02 00  |................|
@@ -148,9 +121,4 @@ $ hexdump -C r_format_example.o
 .
 .
 .
-<<<<<<< HEAD
 </pre>
-=======
-```
->>>>>>> 094076b8faffa172c1fc372785f6863b1d6f0cf4
-
