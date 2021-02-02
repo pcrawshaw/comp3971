@@ -22,7 +22,7 @@ In binary and hexadecimal:
 
 ## On an ARMv8 system:
 
-A very small ARMv8 assembly language program:
+A very small ARMv8 assembly language program (name the file r_format_example.s):
 
 ```asm
 .arch armv8-a
