@@ -15,14 +15,14 @@ Rn = 20
 Rd = 9
 ```
 
-In binary: 
+In binary and hexadecimal: 
 ```
 1000 1011 0001 0101 0000 0010 1000 1001 = 8B150289
 ```
 
-## On an ARM system:
+## On an ARMv8 system:
 
-a very small ARMv8 assembly language program:
+A very small ARMv8 assembly language program:
 
 ```
         .arch armv8-a
@@ -31,7 +31,10 @@ a very small ARMv8 assembly language program:
         add x9, x20, x21
 ```
 
-The GCC compiler will "assemble" a program for us (it recognizes the .s file anme suffix)
+### Assemble a program
+
+The GCC compiler will "assemble" a program for us (it recognizes the .s file 
+name suffix):
 
 ```
  $ gcc -c r_format_example.s
@@ -39,13 +42,21 @@ The GCC compiler will "assemble" a program for us (it recognizes the .s file anm
 
 We should now have a file called `r_format_example.o`. This is an *object* file. 
 It contains the binary machine language version of the instructions in the
-source code file - only a single ADD instruction in this example.
+source code file - only a single `ADD` instruction in this example.
 
 We can examine this file with some standard Linux tools.
 
-First, use `objdump -d` to disassemble the binary object file. As the word
-suggests, this reverses the assenbly process and gives us a textual assembly
+### objdump
+
+First, use `objdump -d` to disassemble the binary object file. As we might guess,
+this reverses the assembly process and gives us a textual assembly
 language version of the program.
+
+*Aside: Can we have a "decompiler" ("discompiler"?) for a high-level language
+like C or Java? Could such a program do the same "reversing" operation 
+and give us our source code back if we start with a binary object file?*
+
+
 
 ```
 r_format_example.o:     file format elf64-littleaarch64
@@ -57,24 +68,29 @@ Disassembly of section .text:
    0:   8b150289        add     x9, x20, x21
 ```
 
-The '.text' section means *executable code* (Why? Google it and find out if
-you are interested). The `objdump` utility understands and can display 
- information about object files.
+The `objdump` utility understands and can display 
+information about object files.
 
-We see the hexadecimal version of the instruction, which is (as it should be)
-0x8b150289.
+The '.text' section means **executable code** (Why? Google it and find out if
+you are interested). 
+
+We see the hexadecimal version of the instruction, which is as we expect,
+**0x8b150289**.
+
+
+### hexdump
 
 We can also do a more direct analysis of the object file using the `hexdump`
-utility:
+utility to dump the "raw" bytes of the object file:
 
-```
+<pre>
 $ hexdump -C r_format_example.o
 
 00000000  7f 45 4c 46 02 01 01 00  00 00 00 00 00 00 00 00  |.ELF............|
 00000010  01 00 b7 00 01 00 00 00  00 00 00 00 00 00 00 00  |................|
 00000020  00 00 00 00 00 00 00 00  f0 00 00 00 00 00 00 00  |................|
 00000030  00 00 00 00 40 00 00 00  00 00 40 00 07 00 06 00  |....@.....@.....|
-00000040  *89 02 15 8b* 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+00000040  <b>89 02 15 8b</b> 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 00000050  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 00000060  00 00 00 00 03 00 01 00  00 00 00 00 00 00 00 00  |................|
 00000070  00 00 00 00 00 00 00 00  00 00 00 00 03 00 02 00  |................|
@@ -89,5 +105,5 @@ $ hexdump -C r_format_example.o
 .
 .
 .
-```
+</pre>
 
