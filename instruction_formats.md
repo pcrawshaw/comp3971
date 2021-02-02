@@ -116,6 +116,6 @@ $ hexdump -n 256 -C r_format_example.o
 We can see (on the fifth line of the output) the `ADD` instruction encoded 
 as `89 02 15 8b`. Why is it "backwards"?
 
-=== To do on your wown (NOT TO BE HANDED IN)
+** To do on your wown (NOT TO BE HANDED IN)
 
-Repeat the above with I-forat and  D-format instructions.
+Repeat the above with I-format and D-format instructions.
