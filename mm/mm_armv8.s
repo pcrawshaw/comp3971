@@ -6,7 +6,9 @@
 
 mm_armv8:
 	// Save registers on stack
-	sub sp, sp, #40
+        // Value of SP must be quadword aligned (multiple of 16 bytes)
+        // So we subtract 48 bytes, even though we only need 40 bytes
+	sub sp, sp, #48
 	stur x30, [sp, #32]
 	stur x29, [sp, #24]
 	stur x21, [sp, #16]
@@ -80,5 +82,5 @@ L3:	lsl x9, x21, #2
         ldur x21, [sp, #16]
         ldur x20, [sp, #8]
         ldur x19, [sp, #0]
-	add sp, sp, #40
+	add sp, sp, #48
 	ret
