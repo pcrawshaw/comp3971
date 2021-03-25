@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
     }
     double elapsed = (double)(clock() - start) / CLOCKS_PER_SEC;
 
-    printf("Block size = %d KB, %.8f sec.\n", length, elapsed);
+    printf("Block size = %ld KB, %.8f sec.\n", length*sizeof(int), elapsed);
 
     return 0;
 }
