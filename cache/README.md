@@ -1,4 +1,4 @@
-* Cache performance test
+# Cache performance test
 
 Compile with
 
