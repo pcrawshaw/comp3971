@@ -11,7 +11,7 @@ Use the `perf.sh` script to run the program and collect statistics using [perf]
 
 ```
 $ ./perf.sh
-Block size = 2048 KB, 5.71319400 sec.
+Block size = 8192 KB, 5.71319400 sec.
 
  Performance counter stats for './cache-test 8':
 
@@ -26,7 +26,7 @@ Block size = 2048 KB, 5.71319400 sec.
        0.000000000 seconds sys
 
 
-Block size = 65536 KB, 4.61167200 sec.
+Block size = 262144 KB, 4.61167200 sec.
 
  Performance counter stats for './cache-test 256':
 
