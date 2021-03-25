@@ -15,15 +15,15 @@ Block size = 8 KB, 4.95913600 sec.
 
  Performance counter stats for './cache-test 8':
 
-        7411795996      cycles:pu                                                  
-       12616612587      instructions:pu           #    1.70  insn per cycle        
-        3758204072      L1-dcache-loads:u                                          
-            559173      L1-dcache-load-misses:u   #    0.01% of all L1-dcache hits 
+        7152084308      cycles:pu                                                  
+       12616612567      instructions:pu           #    1.76  insn per cycle        
+        3758198889      L1-dcache-loads:u                                          
+             26117      L1-dcache-load-misses:u   #    0.00% of all L1-dcache hits 
 
-       4.968913589 seconds time elapsed
+       4.799416983 seconds time elapsed
 
-       4.963807000 seconds user
-       0.000000000 seconds sys
+       4.790306000 seconds user
+       0.003998000 seconds sys
 
 
 Block size = 256 KB, 5.98246000 sec.
