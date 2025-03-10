@@ -2,6 +2,7 @@
 
 Files for RISC-V assembler and interpreter.
 
-- `RiscVInterpreter.java`: A working interpreter with a five-stage pipeline (fetch, decode, execute, memory access, write-back).
-- `RiscVAssembler.java`: An assembler that converts `.asm` files to ELF binaries.
+- `RiscVAssembler.java`: An assembler that converts `.asm` files to simplified-ELF (see below) binaries.
+- `RiscVInterpreter.java`: An interpreter with a five-stage execution cycle (fetch, decode, execute, memory access, write-back). Not fully implemented.
 - Sample `.asm` files: `arithmetic.asm` (computes `f = (a + b) - (c + d)`) and `bubble_sort.asm` (sorts an array).
+
