@@ -1,3 +1,0 @@
-*.o
-dgemm
-mm_neon_sol.s
