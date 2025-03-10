@@ -1,5 +1,5 @@
 .text
-    addi x5, x0, 0x0200
+    addi x5, x0, 0x0040
     addi x6, x0, 5
 outer_loop:
     addi x7, x6, -1
